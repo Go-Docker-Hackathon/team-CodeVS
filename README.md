@@ -27,7 +27,11 @@ Hello , 我们是CodeVS团队。 CodeVS.cn
  ------
  
  
-#### (李金鑫) CodeVS核心成员,前端
+#### sysorem(李金鑫) CodeVS核心成员,前端
+
+之前长期学习web安全，略懂渗透和逆向，混了个乌云账号。
+
+目前在学习web前端开发，希望在接下来hackthon中能尽力完成自己心目中的idea。
 
 
 
