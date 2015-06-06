@@ -3,8 +3,8 @@
  using namespace std; 
  int main() 
  {    
-  intssss a, b;  
-    cin >> a >> b;     
-  cout << a + b +1<< endl;   
+  int a, b;  
+      
+  cout << 2+2+1<< endl;   
 } 
- // 完成程序以后，点击下方的提交，即可看到测试结果 
+ // 完成程序以后，点击下方的提交，即可看到测试结果

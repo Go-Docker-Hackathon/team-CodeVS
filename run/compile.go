@@ -13,9 +13,16 @@ import (
 )
 
 
+func SayHello(w http.ResponseWriter, req *http.Request) {
+    req.ParseForm()
+    fmt.Println("username", req.Form["username"])
+    w.Write([]byte("Hello"))
+}
+
 func Compile(code string, fileName string ) string {
   path, _ := os.Getwd()
   filePath := filepath.Clean(path + "/tmp/" + fileName)
+  runPath := filepath.Clean(path + "/tmp/compile/" + fileName)
   fout, _ := os.Create(filePath)
   lines := strings.Split(code, "\\n")
 
@@ -27,7 +34,8 @@ func Compile(code string, fileName string ) string {
     log.Printf("err: %s", err)
     }
 
-  cmd := exec.Command("g++", "-O2", "-o", "test/test1", filePath)
+  cmd := exec.Command("g++", "-O2", "-o", runPath, filePath)
+  fmt.Println("g++", "-O2", "-o", runPath, filePath)
   out, _ := cmd.CombinedOutput()
   return string(out)
   }
