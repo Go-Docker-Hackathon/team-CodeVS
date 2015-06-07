@@ -1462,7 +1462,7 @@ Ext.onReady(function(){
     var tabs = Ext.createWidget('tabpanel', {
         renderTo: 'tabs',
         resizeTabs: true,
-        height: document.body.scrollHeight+20,
+        height: document.body.scrollHeight+13,
         minTabWidth: 115,
         tabWidth: 135,
         enableTabScroll: true,
@@ -1472,7 +1472,7 @@ Ext.onReady(function(){
             
         },
         items: [{
-            title: 'First tab',
+            title: 'Main.cpp',
             iconCls: 'tabs',
             html:  '<IFRAME marginWidth=0 marginHeight=0 src="editor.html" id="ieditor" height="500px" frameBorder=0 width="100%" scrolling=no ></IFRAME>',
             closable: true
@@ -1482,12 +1482,12 @@ Ext.onReady(function(){
 
     // tab generation code
     var index = 0;
-    while(index < 2){
+    while(index < 1){
         addTab();
     }
     function addTab(){
         tabs.add({
-            title: 'New Tab ' + (++index),
+            title: 'test.c ' + (++index),
             iconCls: 'tabs',
             html:  '<IFRAME marginWidth=0 marginHeight=0 src="editor.html" id="ieditor" height="500px" frameBorder=0 width="100%" scrolling=no ></IFRAME>',
             closable: true
