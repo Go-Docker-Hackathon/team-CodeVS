@@ -1,48 +1,133 @@
-body {
-    font-family: sans;
-    max-width: 1000px;
-    margin: 0 auto;
-    padding: 0 1em;
+html,body{
+margin:0px; 
+height:100%; 
+
+}
+body{
+background: #313A43;
+margin: 0px;
+font-family: Verdana;
+font-size: 9pt ;
+word-wrap: break-word;
+
+}
+#main{
+margin:0px; 
+height: 625px;
+position: absolute;
 }
 
-label {
-    display: block;
-    margin-top: 1em;
+
+
+.code{
+background: #22282E;
+height: 100%;
+position :absolute;
+margin-left: 200px;
+-moz-user-select: none;
+-webkit-user-select: none;
+-ms-user-select: none;
+-khtml-user-select: none;
+user-select: none;
 }
 
-.toolbar {
-    overflow: hidden;
+.terminal{
+
+}
+#codeeditor {
+	background-repeat: repeat;
+	background-attachment: scroll;
+	color: #3969A5;
+	height: 100%;
+	width:100%;
+	right: 0px;
+	overflow: hidden;
+	width: 200px;
+	z-index: 1;
+  margin-top: 0px;
+  position: absolute;
+  width: 100%;
+  z-index: 5px;
+/*
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+*/
+  user-select: none;
+  white-space: nowrap;
+}
+#debuginfo {
+	background-attachment: scroll;
+	color: #1D2126;
+  height: 100%;
+	overflow: hidden;
+	z-index: 1;
+  border: 0px;
+  margin: 0px;
+  word-wrap: break-word;
+  position: absolute;
 }
 
-.toolbar-button {
-    float: right;
-    margin-left: 0.5em;
+#innercontent {
+	background-repeat: repeat;
+/*	background-color: #1D2126;*/
+	background-color: #ffffff;
+	background-attachment: scroll;
+	color: #3969A5;
+	height: 100%;
+	overflow: auto;
+	width: 100%;
+	display: inline;
+	word-wrap: break-word;
+	float: right;
+	margin-top: 0px;
+  }
+#innercontentr {
+	background-repeat: repeat;
+	background-color: #313A43;
+	background-attachment: scroll;
+	color: #3969A5;
+	height: 100%;
+	width: auto;
+	overflow: auto;
+	display: inline;
+	word-wrap: break-word;
+	float: left;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: auto;
+  position: absolute;
+    margin-right: 0px;
+  }
+.middleline{
+	background-repeat: repeat;
+	background-color: #1D2126;
+	background-attachment: scroll;
+	overflow: auto;
+	display: inline;
+	word-wrap: break-word;
+	float: left;
+	left: 12px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+  margin-left: 0px;
+  margin-right: 0px;
+  height: 100%;
+  width: 15px;
+  background: #39434B;
+  position: relative;
+  z-index: 6;
+/*
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  -khtml-user-select: none;
+  user-select: none;
+*/
 }
 
-.toolbar-text {
-    overflow: hidden;
-    display: block;
+table{
+  margin-top: 0px;
 }
-
-input[type=text] {
-    width: 100%;
-    box-sizing: border-box;
-}
-
-.window {
-    font-family: monospace;
-    white-space: pre-wrap;
-    background: black;
-    color: #0f0;
-    padding: 0.5em;
-    margin-bottom: 1em;
-}
-
-#source span {
-    display: block;
-}
-
-.selected {
-    background: #0f0;
-    color: #000;
-}
+  

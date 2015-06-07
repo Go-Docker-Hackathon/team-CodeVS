@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head> 
+  <meta charset="UTF-8" /> 
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /> 
+     
+  <script type="text/javascript" src="jquery-1.4.4.min.js"></script> 
+  <link type="text/css" rel="stylesheet" href="style.css" /> 
+  <style type="text/css" media="screen">
+    body {
+        overflow: hidden;
+    }
+
+    #editor {
+        margin：0;
+        position: absolute;
+        bottom: 20px;
+        right: 0;
+        left: 0px;
+        top: 30px;
+        z-index: 6;
+        word-wrap: break-word;
+        word-break: break-all;
+        overflow-x: hidden;
+        overflow-y: hidden;
+    }
+#middleline
+{
+    position:reletive;
+    border:1px solid #333333;
+    text-align:center;
+    line-height:400%;
+    font-size:13px;
+    left:10px;
+    background-repeat: repeat;
+	background-color: #1D2126;
+	background-attachment: scroll;
+	overflow: auto;
+	display: inline;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 590px;
+    margin-right: 0px;
+    height: 100%;
+    width: 15px;
+    background: #39434B;
+}
+</style> 
+     <script src="classie.js"></script>
+		<script src="progressButton.js"></script>
+		<script>
+			[].slice.call( document.querySelectorAll( 'button.progress-button' ) ).forEach( function( bttn ) {
+				new ProgressButton( bttn, {
+					callback : function( instance ) {
+						var progress = 0,
+							interval = setInterval( function() {
+								progress = Math.min( progress + Math.random() * 0.1, 1 );
+								instance._setProgress( progress );
+								if( progress === 1 ) {
+									instance._stop(1);
+									clearInterval( interval );
+								}
+							}, 200 );
+					}
+				} );
+			} );
+		</script>
+  <script type="text/javascript" language="javascript">
+var _move=false;//移动标记
+var _x,_y;//鼠标离控件左上角的相对位置
+$(document).ready(function(){
+    $("#middleline").click(function(){
+        //alert("click");//点击（松开后触发）
+        }).mousedown(function(e){
+        _move=true;
+        _x=e.pageX-parseInt($("#middleline").css("left"));
+        _y=e.pageY-parseInt($("#middleline").css("top"));
+
+    });
+    $(document).mousemove(function(e){
+        if(_move){
+            var x=e.pageX-_x;//左上角的绝对位置
+            var y=e.pageY-_y;
+            var codex=$("#innercontentr").css("width");
+            $("#middleline").css({top:y,left:x});//控件新位置
+            $("#editor").css({top:y,width:x+590});//控件新位置
+            $("#innercontentr").css({left:x+600,top:y,width:1070-590-x});//控件新位置
+//            alert(editor.getValue());
+            
+        }
+    }).mouseup(function(){
+    _move=false;
+  });
+});
+      
+      function gettime() {
+    var date = new Date();
+    var seperator1 = "-";
+    var seperator2 = ":";
+    var month = date.getMonth() + 1;
+    var strDate = date.getDate();
+    if (month >= 1 && month <= 9) {
+        month = "0" + month;
+    }
+    if (strDate >= 0 && strDate <= 9) {
+        strDate = "0" + strDate;
+    }
+    var currentdate = date.getFullYear() + seperator1 + month + seperator1 + strDate
+            + " " + date.getHours() + seperator2 + date.getMinutes()
+            + seperator2 + date.getSeconds();
+    return currentdate;
+};
+      function getfilename(){
+      
+      };
+      
+      function postcode(){
+        var concode ;
+        var newcode ;
+        setTimeout(function(){
+           newcode = document.getElementById('editor').getValue;
+           document.body.style.background="transparent";
+   //         if (concode!=newcode){
+//                var current = gettime();
+//                var filename= getfilename();
+            $.ajax({
+            type:"POST",
+            url:"http://42.159.194.108/run",
+//            data: "filename:" + "test.cpp" +"time:" + current,
+            data:"time=12&filename=panic.c",
+            complete: function(XMLHttpRequest, textStatus){
+            document.getElementById('con').innerHTML=XMLHttpRequest.responseText
+               //alert(XMLHttpRequest.responseText);
+//               concode=newcode;
+            },  
+          });  
+            document.body.style.background="transparent";
+            document.html.style.background="transparent";
+           // }
+        },1000);
+      };
+      postcode();
+</script> 
+  
+  
+ </head> 
+ <body> 
+  <div id="main"> 
+   <div id="editor" class="editor" style="width: 600px;display:inline;"> 
+    <pre id="editor" style="font: 12px/normal 'Consolas', 'Menlo', 'Ubuntu Mono', 'Consolas', 'source-code-pro', monospace;">
+    
+    /*
+作者:wph95
+题目:p1000 A+B问题
+*/
+
+//
+//如何写一份可以提交的代码？以P1000 A+B为例
+#include <iostream>
+using namespace std;
+int main()
+{
+    int a, b; //定义两个变量名
+    cin >> a >> b; //从标准输入流中输入两个整数
+    cout << a + b << endl; //输出到标准输出流中
+
+}
+// 完成程序以后，点击下方的提交，即可看到测试结果
+*/
+    </pre> 
+    <script src="src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script> 
+    <script src="src-noconflict/ext-language_tools.js"></script> 
+    <script>
+    ace.require("ace/ext/language_tools");
+    var editor = ace.edit("editor");
+    editor.setTheme("ace/theme/xcode");
+    editor.getSession().setMode("ace/mode/c_cpp");
+    editor.setOptions({
+        enableBasicAutocompletion: true,
+        enableSnippets: true,
+        enableLiveAutocompletion: true
+    });
+</script> 
+   </div> 
+   <div id="middleline" class="middleline"></div>
+   <div class="codeeditor"> 
+   <div id="innercontentr"> 
+    <p id="con">what is your dream of these years in such a nice world2333</p> 
+       
+       
+   </div> 
+  </div>  
+  </div> 
+ </body>
+</html>

@@ -1,37 +1,122 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
-    <title>gdb/web example</title>
-    <link type="text/css" rel="stylesheet" href="style.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebIDE For COdeVS</title>
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/sb-admin.css" rel="stylesheet">
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/morris-0.4.3.min.css">
+    <link href="img/saas.css" rel="stylesheet" type="text/css" />
+    <link href="img/mask.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="f.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="ext-all.css" />
+    <script type="text/javascript" src="bootstrap.js"></script>
+    <script type="text/javascript" src="examples.js"></script>
+    <script type="text/javascript" src="tabs-adv.js"></script>  
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/bootstrap.js"></script>
+    <script type="text/javascript" src="jquery-1.4.4.min.js"></script>
+	<script type="text/javascript" src="jquery.ztree.core-3.5.js"></script>
+    <style type="text/css">
+        #ieditor{
+        margin-top: 0px;
+        height: 100%;
+        width:100%;
+        top: 0;
+        margin-top: -30px;
+        border: none;
+        margin-bottom: 0px;
+        }
+        
+    </style>
+	<SCRIPT type="text/javascript">
+		var setting = {
+			data: {
+				simpleData: {
+					enable: true
+				}
+			}
+		};
+
+		var zNodes =[
+			{ id:1, pId:0, name:"Project 1", open:true},
+			{ id:11, pId:1, name:"Filelist 1"},
+			{ id:111, pId:11, name:"main file 111"},
+			{ id:112, pId:11, name:"main file 112"},
+			{ id:113, pId:11, name:"main file 113"},
+			{ id:114, pId:11, name:"main file 114"},
+			{ id:12, pId:1, name:"Filelist 2"},
+			{ id:121, pId:12, name:"file"},
+			{ id:122, pId:12, name:"file"},
+			{ id:123, pId:12, name:"file"},
+			{ id:124, pId:12, name:"file"},
+			{ id:13, pId:1, name:"aha", isParent:true},
+			{ id:2, pId:0, name:"Project 2"},
+			{ id:21, pId:2, name:"File list 2", open:true},
+			{ id:211, pId:21, name:"File "},
+			{ id:212, pId:21, name:"file"},
+			{ id:213, pId:21, name:"file"},
+			{ id:214, pId:21, name:"file"},
+			{ id:22, pId:2, name:"Project 3"},
+			{ id:221, pId:22, name:"File"},
+			{ id:222, pId:22, name:"fiel"},
+			{ id:223, pId:22, name:"file"},
+			{ id:224, pId:22, name:"file"},
+			{ id:23, pId:2, name:"Project 3"},
+			{ id:231, pId:23, name:"file"},
+			{ id:232, pId:23, name:"file"},
+			{ id:233, pId:23, name:"file"},
+			{ id:234, pId:23, name:"file"},
+			{ id:3, pId:0, name:"Project 4", isParent:true}
+		];
+
+		$(document).ready(function(){
+			$.fn.zTree.init($("#filetree"), setting, zNodes);
+		});
+        
+	</SCRIPT>
+      
+     <link rel="stylesheet" type="text/css" href="normalize.css">
+		<link rel="stylesheet" type="text/css" href="component.css">
+		<script src="modernizr.custom.js"></script>
   </head>
+  
   <body>
-    <label>Executable:</label>
-    <div>
-      <input id="load" type="submit" value="Load" class="toolbar-button"/>
-      <span class="toolbar-text"><input id="file" type="text"/></span>
+    <div id="wrapper">
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav side-nav">
+            <ul id="filetree" class="ztree"></ul>
+          </ul>
+        </div>
+      </nav>
+      <div id="page-wrapper">
+		<script src="classie.js"></script>
+		<script src="progressButton.js"></script>
+		<script>
+			[].slice.call( document.querySelectorAll( 'button.progress-button' ) ).forEach( function( bttn ) {
+				new ProgressButton( bttn, {
+					callback : function( instance ) {
+						var progress = 0,
+							interval = setInterval( function() {
+								progress = Math.min( progress + Math.random() * 0.1, 1 );
+								instance._setProgress( progress );
+
+								if( progress === 1 ) {
+									instance._stop(1);
+									clearInterval( interval );
+								}
+							}, 200 );
+					}
+				} );
+			} );
+		</script>
+    <div id="tabs" style="margin-top:-10px;margin-bottom: 0px;"></div>
     </div>
-    <label>Arguments:</label>
-    <div>
-      <input id="arguments" type="text"/>
     </div>
-    <p>
-      <input id="run" type="submit" value="Run"/>
-      <input id="continue" type="submit" value="Continue"/>
-      <input id="step" type="submit" value="Step"/>
-      |
-      <input id="interrupt" type="submit" value="Interrupt"/>
-      <div id="status" class="window">(load and run a program)</div>
-    </p>
-    <div class="window" id="source">(no source available)</div>
-    <div class="window" id="result">Ready!</div>
-    <label>Input:</label>
-    <div>
-      <input id="eot" type="submit" value="EOT" class="toolbar-button"/>
-      <input id="send" type="submit" value="Send" class="toolbar-button"/>
-      <span class="toolbar-text"><input id="line" type="text"/></span>
-    </div>
-    <label>Output:</label>
-    <div class="window" id="output"></div>
-    <script type="text/javascript" src="script.js"></script>
   </body>
+
+
 </html>
