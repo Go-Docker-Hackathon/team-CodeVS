@@ -125,7 +125,7 @@ $(document).ready(function(){
 //                var filename= getfilename();
             $.ajax({
             type:"POST",
-            url:"http://42.159.194.108/run",
+            url:"http://42.159.194.108/compile",
 //            data: "filename:" + "test.cpp" +"time:" + current,
             data:"time=12&filename=panic.c",
             complete: function(XMLHttpRequest, textStatus){
@@ -184,7 +184,7 @@ int main()
    <div id="middleline" class="middleline"></div>
    <div class="codeeditor"> 
    <div id="innercontentr"> 
-    <p id="con">  </p> 
+    <p id="con">content</p> 
        
        
    </div> 

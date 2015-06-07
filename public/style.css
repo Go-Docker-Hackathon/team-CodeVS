@@ -1,7 +1,8 @@
 html,body{
 margin:0px; 
 height:100%; 
-
+background: #313A43;
+z-index: 20;
 }
 body{
 background: #313A43;
@@ -13,7 +14,7 @@ word-wrap: break-word;
 }
 #main{
 margin:0px; 
-height: 625px;
+height: 710px;
 position: absolute;
 }
 
